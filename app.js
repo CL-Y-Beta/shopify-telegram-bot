@@ -56,7 +56,7 @@ async function createWebhook() {
 
 app.get('/', (req, res) => {
   const dataToLog = { message: 'This is from the server!' };
-  res.send(dataToLog);
+  res.json(dataToLog);
 });
 
 
