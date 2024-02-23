@@ -1,6 +1,5 @@
 // Dynamically import 'dotenv' and immediately call its config function
-import('dotenv').then((dotenv) => dotenv.config());
-
+import 'dotenv/config'
 
 // import http from 'http';
 
