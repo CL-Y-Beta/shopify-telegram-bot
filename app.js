@@ -1,24 +1,27 @@
 // Dynamically import 'dotenv' and immediately call its config function
 import 'dotenv/config'
-
-import http from 'http';
-
-const hostname = '127.0.0.1';
-const port = 3000;
-
 import fetch from 'node-fetch';
+import express from 'express';
+import path from 'path';
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
+const app = express();
+
+
+const port = process.env.PORT || 3000;
+
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
-
-
 
 const shopifyDomain = process.env.DOMAIN
 console.log(shopifyDomain)
@@ -50,5 +53,11 @@ async function createWebhook() {
   const data = await response.json();
   console.log('Webhook created:', data, response.status);
 }
+
+app.get('/', (req, res) => {
+  const dataToLog = { message: 'This is from the server!' };
+  res.send(dataToLog);
+});
+
 
 createWebhook();

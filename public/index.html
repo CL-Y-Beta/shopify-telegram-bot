@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just a quickie</title>
+</head>
+<script>
+  fetch('/')
+    .then(response => response.json())
+    .then(data => {
+      console.log('Data from server:', data);
+    })
+    .catch(error => console.error('Error when fetch data:', error));
+</script>
+
+<body>
+  <h1>Hey, World!</h1>
+</body>
+</html>
