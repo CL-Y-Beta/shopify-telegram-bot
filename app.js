@@ -24,7 +24,7 @@ const shopifyDomain = process.env.DOMAIN
 console.log(shopifyDomain)
 const accessToken = process.env.API_KEY
 
-const webhookUrl = 'http://127.0.0.1:3000/';
+const webhookUrl = 'https://shopify-telegram-bot.vercel.app/';
 
 async function createWebhook() {
   const response = await fetch(`https://${shopifyDomain}/admin/api/2024-01/webhooks.json`, {
