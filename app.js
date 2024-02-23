@@ -19,9 +19,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+
 
 const shopifyDomain = process.env.DOMAIN
 console.log(shopifyDomain)
@@ -52,12 +50,16 @@ async function createWebhook() {
 
   const data = await response.json();
   console.log('Webhook created:', data, response.status);
+  return data
 }
 
-app.get('/', (req, res) => {
-  const dataToLog = { message: 'This is from the server!' };
+const webhookData = createWebhook();
+
+app.get('/data', (req, res) => {
+  const dataToLog = {"test": "test", "webhook" : webhookData};
   res.json(dataToLog);
 });
 
-
-createWebhook();
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});

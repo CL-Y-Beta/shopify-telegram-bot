@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Just a quickie</title>
 </head>
+
 <script>
-  fetch('/')
+  fetch('/data')
     .then(response => response.json())
     .then(data => {
       console.log('Data from server:', data);
