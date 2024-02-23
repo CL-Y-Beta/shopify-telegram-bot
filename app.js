@@ -56,7 +56,7 @@ async function createWebhook() {
 const webhookData = createWebhook();
 
 app.get('/data', (req, res) => {
-  const dataToLog = {"test": "test", "webhook" : webhookData};
+  const dataToLog = {"webhook" : webhookData};
   res.json(dataToLog);
 });
 
