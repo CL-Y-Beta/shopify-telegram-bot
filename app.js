@@ -1,27 +1,28 @@
 // Dynamically import 'dotenv' and immediately call its config function
 import 'dotenv/config'
 
-// import http from 'http';
+import http from 'http';
 
-// const hostname = '127.0.0.1';
-// const port = 3000;
+const hostname = '127.0.0.1';
+const port = 3000;
 
 import fetch from 'node-fetch';
 
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello, World!\n');
-// });
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
 
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 
 
-const shopifyDomain = 'www.agrazyday.com';
-
+const shopifyDomain = process.env.DOMAIN
+console.log(shopifyDomain)
+const accessToken = process.env.API_KEY
 
 const webhookUrl = 'http://127.0.0.1:3000/';
 
